@@ -1,43 +1,44 @@
 # EXECUTE
 
-EXECUTE — execute a prepared statement
+EXECUTE — 執行預備語句
 
-### Synopsis
+### 語法
 
 ```
 EXECUTE name [ ( parameter [, ...] ) ]
 ```
 
-### Description
+### 說明
 
-`EXECUTE` is used to execute a previously prepared statement. Since prepared statements only exist for the duration of a session, the prepared statement must have been created by a `PREPARE` statement executed earlier in the current session.
+`EXECUTE` 用於執行先前已準備（prepared）的語句。由於預備語句只在工作階段（session）期間存在，因此該預備語句必須是在目前工作階段中較早之前透過 `PREPARE` 所建立。
 
-If the `PREPARE` statement that created the statement specified some parameters, a compatible set of parameters must be passed to the `EXECUTE` statement, or else an error is raised. Note that (unlike functions) prepared statements are not overloaded based on the type or number of their parameters; the name of a prepared statement must be unique within a database session.
+如果建立該語句的 `PREPARE` 指定了某些參數，則必須在 `EXECUTE` 中傳入一組相容的參數，否則會回報錯誤。請注意（不同於函式），預備語句不會依參數型別或數量進行多載；預備語句名稱在同一個資料庫工作階段內必須是唯一的。
 
-For more information on the creation and usage of prepared statements, see [PREPARE](https://www.postgresql.org/docs/10/static/sql-prepare.html).
+關於預備語句的建立與使用方式，請參閱 [PREPARE](https://www.postgresql.org/docs/10/static/sql-prepare.html)。
 
-### Parameters
+### 參數
 
 _`name`_
 
-The name of the prepared statement to execute.
+要執行的預備語句名稱。
 
 _`parameter`_
 
-The actual value of a parameter to the prepared statement. This must be an expression yielding a value that is compatible with the data type of this parameter, as was determined when the prepared statement was created.
+預備語句某個參數的實際值。它必須是一個可產生與該參數資料型別相容之值的運算式，而該參數型別是在建立預備語句時決定的。
 
-### Outputs
+### 輸出
 
-The command tag returned by `EXECUTE` is that of the prepared statement, and not `EXECUTE`.
+`EXECUTE` 回傳的命令標籤（command tag）會是該預備語句本身的命令標籤，而不是 `EXECUTE`。
 
-### Examples
+### 範例
 
-Examples are given in the [Examples](https://www.postgresql.org/docs/10/static/sql-prepare.html#SQL-PREPARE-EXAMPLES) section of the [PREPARE](https://www.postgresql.org/docs/10/static/sql-prepare.html) documentation.
+範例請見 [PREPARE](https://www.postgresql.org/docs/10/static/sql-prepare.html) 文件中的 [Examples](https://www.postgresql.org/docs/10/static/sql-prepare.html#SQL-PREPARE-EXAMPLES) 小節。
 
-### Compatibility
+### 相容性
 
-The SQL standard includes an `EXECUTE` statement, but it is only for use in embedded SQL. This version of the `EXECUTE` statement also uses a somewhat different syntax.
+SQL 標準包含 `EXECUTE` 指令，但它僅供嵌入式 SQL（embedded SQL）使用。此處的 `EXECUTE` 指令版本也採用了稍有不同的語法。
 
-### See Also
+### 另請參閱
 
 [DEALLOCATE](https://www.postgresql.org/docs/10/static/sql-deallocate.html), [PREPARE](https://www.postgresql.org/docs/10/static/sql-prepare.html)
+

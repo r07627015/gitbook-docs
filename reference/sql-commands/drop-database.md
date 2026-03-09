@@ -1,39 +1,40 @@
 # DROP DATABASE
 
-DROP DATABASE — remove a database
+DROP DATABASE — 移除資料庫
 
-### Synopsis
+### 語法
 
 ```
 DROP DATABASE [ IF EXISTS ] name
 ```
 
-### Description
+### 說明
 
-`DROP DATABASE` drops a database. It removes the catalog entries for the database and deletes the directory containing the data. It can only be executed by the database owner. Also, it cannot be executed while you or anyone else are connected to the target database. (Connect to `postgres` or any other database to issue this command.)
+`DROP DATABASE` 用於刪除資料庫。它會移除該資料庫的系統目錄（catalog）項目，並刪除包含資料的目錄。此指令只能由資料庫擁有者執行。此外，當你或其他任何人仍連線到目標資料庫時，不能執行此指令。（請先連線到 `postgres` 或其他資料庫再執行此指令。）
 
-`DROP DATABASE` cannot be undone. Use it with care!
+`DROP DATABASE` 無法復原，請謹慎使用！
 
-### Parameters
+### 參數
 
 `IF EXISTS`
 
-Do not throw an error if the database does not exist. A notice is issued in this case.
+若資料庫不存在則不拋出錯誤；在此情況下會發出一則通知（notice）。
 
 _`name`_
 
-The name of the database to remove.
+要移除的資料庫名稱。
 
-### Notes
+### 注意事項
 
-`DROP DATABASE` cannot be executed inside a transaction block.
+`DROP DATABASE` 不能在交易區塊（transaction block）中執行。
 
-This command cannot be executed while connected to the target database. Thus, it might be more convenient to use the program [dropdb](https://www.postgresql.org/docs/10/static/app-dropdb.html) instead, which is a wrapper around this command.
+當連線到目標資料庫時，無法執行此指令。因此，使用程式 [dropdb](https://www.postgresql.org/docs/10/static/app-dropdb.html) 可能更方便；它是此指令的包裝（wrapper）。
 
-### Compatibility
+### 相容性
 
-There is no `DROP DATABASE` statement in the SQL standard.
+SQL 標準中沒有 `DROP DATABASE` 指令。
 
-### See Also
+### 另請參閱
 
 [CREATE DATABASE](https://www.postgresql.org/docs/10/static/sql-createdatabase.html)
+
